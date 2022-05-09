@@ -1,0 +1,30 @@
+package softwareTestingMaterial;
+
+import java.awt.RenderingHints.Key;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class CtrlandClick {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		driver.get("https://www.amazon.in/");
+		
+		WebElement mobile = driver.findElement(By.xpath("//a[contains(text(),'Electronics')]"));
+		Actions ctrlKey = new Actions(driver);
+		
+		ctrlKey.keyDown(Keys.CONTROL).moveToElement(mobile).click().keyUp(Keys.CONTROL).build().perform();
+	}
+}
