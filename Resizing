@@ -1,0 +1,31 @@
+package softwareTestingMaterial;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Resizing {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		driver.get("https://jqueryui.com/resizable/");
+		
+		WebElement ff = driver.findElement(By.className("demo-frame"));
+		driver.switchTo().frame(ff);
+		
+		WebElement Size = driver.findElement(By.cssSelector("body:nth-child(2) div.ui-widget-content.ui-resizable > div.ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-gripsmall-diagonal-se:nth-child(4)"));
+		Actions re = new Actions(driver);
+		//re.dragAndDropBy(Size, 150, 200);
+		re.dragAndDropBy( Size, 100, 50).build().perform();
+		//re.clickAndHold(Size).moveByOffset(300, 100).release().perform(); 	
+	}
+}
