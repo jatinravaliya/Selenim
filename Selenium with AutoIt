@@ -1,0 +1,32 @@
+package softwareTestingMaterial;
+
+import java.io.IOException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class AutoItWithSelenium {
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://www.filemail.com/share/upload-file");
+		driver.findElement(By.xpath("//span[contains(text(),'Add Files')]")).click();		
+		Runtime.getRuntime().exec("D:\\Script\\TestScript.exe");		
+		Thread.sleep(3000);
+	}
+}
+
+
+
+ControlFocus("Open","","Edit1")
+Sleep(3000)
+ControlSetText("Open","","Edit1","D:\Script\test.png")
+Sleep(3000)
+ControlClick("Open","","Button1")
+Sleep(3000)
