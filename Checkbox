@@ -1,0 +1,75 @@
+package Project17052022.Practical17052022;
+
+import java.awt.Checkbox;
+import java.awt.Component;
+import java.awt.Window;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class HandelCheckBox {
+
+	private static final Component Allcheckbox = null;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://itera-qa.azurewebsites.net/home/automation"); 
+		driver.manage().window().maximize();
+//1) Select specific Check box 
+		//driver.findElement(By.id("monday")).click();
+		
+		
+//2) select all the check boxes
+		//input[@type='checkbox' and contains(@id,'day')]"));
+		List <WebElement> Allcheckbox =	driver.findElements(By.xpath("//input[@type='checkbox' and contains(@id,'day')]"));
+		System.out.println("test"+ Allcheckbox.size());
+		
+		 
+		//for loop
+		/* for(int i=0; i<=Allcheckbox.size(); i++) {
+			Allcheckbox.get(i).click();
+		} */
+		
+	/*	//Using for..each loop
+		for(WebElement chbox:Allcheckbox) {
+			chbox.click();			
+		} */
+		
+//3) select multiple check boxes by choice
+		/* for (WebElement chbox:Allcheckbox ) {
+		String checkboxname = chbox.getAttribute("id");
+		if(checkboxname.equals("monday") || checkboxname.equals("sunday")) {
+			chbox.click();
+		} 
+		}
+	}*/
+//4) 	Select last 2 check boxes	
+	
+	/*	int totalcheckboxes = Allcheckbox.size();
+		for(int i = totalcheckboxes-2; i<totalcheckboxes; i++ ) {
+			
+			Allcheckbox.get(i).click();
+			
+		} */
+
+//5) select first 2 check boxes		
+		int totalcheckboxes = Allcheckbox.size();
+		for(int i=0; i<=Allcheckbox.size(); i++) {
+			if(i<2) {
+				Allcheckbox.get(i).click();
+			}
+		}
+			
+}
+	
+}		
+			
+
