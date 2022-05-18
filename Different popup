@@ -1,0 +1,71 @@
+package Project17052022.Practical17052022;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+//import org.openqa.selenium.Alert;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Alert {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		//WebDriverManager.chromedriver().setup();
+		//WebDriver driver = new ChromeDriver();
+		//driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+		
+	/* 
+	 * Only OK
+	 * 
+	 * driver.findElement(By.xpath("//button[contains(text(),'Click for JS Alert')]")).click();
+		Thread.sleep(5000);
+		driver.switchTo().alert().accept(); */
+		
+	/*
+	 * OK & Closed
+	 * 	driver.findElement(By.xpath("//button[contains(text(),'Click for JS Confirm')]")).click();
+	 
+		Thread.sleep(2000);
+		driver.switchTo().alert().dismiss();
+		//driver.switchTo().alert().accept();  */
+		
+	/*
+	 * enter value in popup
+	 * 
+		driver.findElement(By.xpath("//button[contains(text(),'Click for JS Prompt')]")).click();		 
+		Thread.sleep(2000);
+		   org.openqa.selenium.Alert AlertWinndow = driver.switchTo().alert();
+		   Thread.sleep(2000);
+		   AlertWinndow.sendKeys("Test");
+		   Thread.sleep(5000);
+		   AlertWinndow.accept();
+		   Thread.sleep(2000); */
+		
+		
+	//Authentication popup 
+		// Synatxa - https://username:passwoed@URL
+		//driver.get("https://admin:admin@the-internet.herokuapp.com/basic_auth");
+		
+		
+		
+	//Notification popup   http://google.com/ 
+		
+		WebDriverManager.chromedriver().setup();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--disable-notification");
+		
+		WebDriver driver = new ChromeDriver(options);
+		driver.get("https://www.redbus.in/");
+		//driver.switchTo().alert().dismiss();
+		
+		
+		
+		
+		
+
+	}
+
+}
