@@ -1,0 +1,38 @@
+package Project17052022.Practical17052022;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class FrameAndIFrome {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		//driver.get("https://www.selenium.dev/selenium/docs/api/java/index.html?overview-summary.html");
+		
+		//driver.get("https://www.selenium.dev/selenium/docs/api/java/index.html?overview-summary.html");
+		//driver.switchTo().frame("packageListFrame");
+		//driver.findElement(By.linkText("org.openqa.selenium")).click();
+		
+		driver.get("https://dev.greenectus.com/");
+		driver.findElement(By.xpath("//body/nav[1]/div[1]/div[2]/ul[2]/li[1]/a[1]")).click();
+		
+		////cke_wysiwyg_frame cke_reset
+		WebElement OuterFrame = driver.findElement(By.xpath("//*[@id=\"cke_1_contents\"]/iframe"));
+		driver.switchTo().frame(OuterFrame);
+		
+		//WebElement OuterFrame = driver.findElement(By.xpath("body/div[@id='login-overlay']/div[1]/div[1]/div[2]/div[1]/div[1]"));
+		//driver.switchTo().frame(OuterFrame);
+		
+		//WebElement innerFrame = driver.findElement(By.xpath("//body/div[@id='login-overlay']/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]"));
+		//driver.switchTo().frame(innerFrame);
+		
+		driver.findElement(By.xpath("//input[@id='email']")).sendKeys("ABD");
+	}
+}
