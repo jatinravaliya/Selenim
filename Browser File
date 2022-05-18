@@ -1,0 +1,66 @@
+package Project17052022.Practical17052022;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class HandleBrowserWindow {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://opensource-demo.orangehrmlive.com/index.php/auth/login");
+		driver.findElement(By.xpath("//a[contains(text(),'OrangeHRM, Inc')]")).click();
+		
+		  Set <String> WindowID = driver.getWindowHandles(); // Return the ID of Multiple windows
+		
+		  /* Iterator<String> it = WindowID.iterator();
+		    String parentWindowID = it.next();
+		    String ChildWindowID = it.next();
+		    
+		    System.out.println("This is a first window ID:-"+" " +parentWindowID);
+		    System.out.println("This is a secound window ID:-"+" " +ChildWindowID); */ 
+		
+/*List <String> WindowID1 = new ArrayList(WindowID);
+		String ParentWindowId = WindowID1.get(0);
+		String ChildWindowId = WindowID1.get(1);
+		
+		System.out.println(ParentWindowId);
+		System.out.println(ChildWindowId);
+		
+		//How to use window ID's for Switching 
+		
+		driver.switchTo().window(ParentWindowId);
+		// driver.switchTo().window(ChildWindowId);
+		System.out.println("Window title"+ driver.getCurrentUrl()); */
+		
+//  Get multiple title of all open window
+		/* List <String> WindowID1 = new ArrayList(WindowID); 
+		for(String winID:WindowID1) {
+		String title = driver.switchTo().window(winID).getTitle();
+		System.out.println("This is title after swith"+""+title);
+		
+		driver.close();
+		//driver.quit(); 
+	
+		}*/ 
+		  
+		  List <String> WindowID1 = new ArrayList(WindowID); 
+		for(String winID:WindowID1) {
+			String title = driver.switchTo().window(winID).getTitle();	
+			if(title.equals(WindowID1)) {
+				//title.closed(); 
+			}
+		
+	}
+
+}}
