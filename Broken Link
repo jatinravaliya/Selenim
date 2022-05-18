@@ -1,0 +1,53 @@
+package Project17052022.Practical17052022;
+
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class BrokenList {
+
+	public static void main(String[] args) throws MalformedURLException {
+		// TODO Auto-generated method stub
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://youcom.club/pricing");
+		List <WebElement> links  = driver.findElements(By.tagName("a"));
+		int brokenlinks = 0;
+		
+		for(WebElement element:links) {
+			String url = element.getAttribute("href");
+			if (url==null || url ==null) {
+				System.out.println("URL is Empty:");
+				continue;
+			}
+			
+			URL link = new URL(url);
+			
+			
+			try {
+				HttpURLConnection httpconn = (HttpURLConnection) link.openConnection();
+				httpconn.connect();
+				
+				if(httpconn.getResponseCode()>=400) {
+					System.out.println(httpconn.getResponseCode()+url+ " is"+" Broken link");
+					
+				}
+				
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}			
+	}
+		System.out.println("BNumber od broken link:" + brokenlinks);
+		driver.quit();
+			
+		}
+	}
