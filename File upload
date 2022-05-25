@@ -1,0 +1,57 @@
+package Project17052022.Practical17052022;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class FileUpload {
+
+	private static final StringSelection New = null;
+
+	public static void main(String[] args) throws AWTException {
+		// TODO Auto-generated method stub
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.monsterindia.com/");
+		
+		driver.findElement(By.xpath("//a[@class='btn block resume-btn btn-orange mt20']")).click();
+		//SendKey
+		//driver.findElement(By.xpath("//input[@id='file-upload']")).sendKeys("C:\\Users\\Admin\\Downloads\\JatinRavaliyaUpdated2021 (1).docx");
+		
+		WebElement button = driver.findElement(By.xpath("//input[@id='file-upload']"));
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", button);
+		
+		
+		Robot rb = new Robot();
+		rb.delay(2000);
+		StringSelection ss = new StringSelection("C:\\Users\\Admin\\Downloads\\JatinRavaliyaUpdated2021 (1).docx");
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+		
+		//CTRL+V
+		rb.keyPress(KeyEvent.VK_CONTROL); //Press on CTRL key
+		rb.keyPress(KeyEvent.VK_V); //Press on V key
+		rb.delay(2000);
+		
+		rb.keyRelease(KeyEvent.VK_CONTROL); 
+		rb.keyRelease(KeyEvent.VK_V); 
+		rb.delay(2000);
+		
+		//press Enter key
+		rb.keyPress(KeyEvent.VK_ENTER); 
+		rb.keyRelease(KeyEvent.VK_ENTER); 
+		rb.delay(2000);
+		
+		
+	}	
+}
